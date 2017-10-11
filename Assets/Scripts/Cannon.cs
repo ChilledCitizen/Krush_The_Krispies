@@ -82,21 +82,22 @@ public class Cannon : MonoBehaviour {
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (!firstClick)
-            {
-                isRotate = false;
-                maxPow = false;
-
-                Fire();
-            }
+            
 
             if (firstClick && !isRotate)
             {
                 isRotate = true;
                 firstClick = false;
-            }            
+            }
+            if (!firstClick)
+            {
 
-                       
+                maxPow = false;
+
+                Fire();
+            }
+
+
         }
         
     }
@@ -105,6 +106,7 @@ public class Cannon : MonoBehaviour {
     {
 
         firstClick = true;
+        isRotate = false;
 
         // Create the Bullet from the Bullet Prefab
         GameObject bullet = Instantiate(
