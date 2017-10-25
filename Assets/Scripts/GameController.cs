@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour {
 
     public GameObject ammo;
     public Camera cam;
+    
+    public Scene scene;
 
     [HideInInspector]
     public Vector3 camStartPos;
@@ -16,30 +18,52 @@ public class GameController : MonoBehaviour {
 
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         camStartPos = GameObject.Find("Main Camera").transform.position;
-
+        
+        scene = SceneManager.GetActiveScene();
 
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        ammo = GameObject.FindWithTag("Ammo");
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        int enemyCount = enemies.Length;
 
-        if (Input.GetKeyDown("r"))
+        if (scene.name != "WinScreen")
         {
-            SceneManager.LoadScene(0);
-        }
 
-        if (ammo != null)
-        {
-            Vector3 ammoPos = new Vector3(ammo.transform.position.x, ammo.transform.position.y, -4.87f);
-            cam.transform.position = ammoPos;
+            
+            ammo = GameObject.FindWithTag("Ammo");
+
+            if (Input.GetKeyDown("r"))
+            {
+                SceneManager.LoadScene(0);
+            }
+
+            if (ammo != null)
+            {
+                Vector3 ammoPos = new Vector3(ammo.transform.position.x, ammo.transform.position.y, camStartPos.z);
+                cam.transform.position = ammoPos;
+            }
+
+            if (ammo == null || Input.GetMouseButtonDown(0))
+            {
+                cam.transform.position = camStartPos;
+                DestroyObject(ammo);
+            }
+
+            if (enemies.Length == 0 || enemies == null || enemyCount == 0)
+            {
+                Debug.Log("All Enemies Killed");
+                SceneManager.LoadScene(1);
+            }
         }
-		
-        if (ammo == null || Input.GetMouseButtonDown(0))
+        else
         {
-            cam.transform.position = camStartPos;
-            DestroyObject(ammo);
+            if (Input.GetMouseButtonDown(0))
+            {
+                SceneManager.LoadScene(0);
+            }
         }
 	}
 }
