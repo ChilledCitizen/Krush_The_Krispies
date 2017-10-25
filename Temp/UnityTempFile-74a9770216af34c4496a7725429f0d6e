@@ -99,6 +99,7 @@
 -define:ENABLE_NATIVE_ARRAY_CHECKS
 -define:UNITY_TEAM_LICENSE
 Assets/Scripts/Cannon.cs
+Assets/Scripts/Enemy.cs
 Assets/Scripts/GameController.cs
 -r:"D:\Program Files (x86)\Unity\Editor\Data\Mono\lib\mono\unity\System.Runtime.Serialization.dll"
 -r:"D:\Program Files (x86)\Unity\Editor\Data\Mono\lib\mono\unity\System.Xml.Linq.dll"
