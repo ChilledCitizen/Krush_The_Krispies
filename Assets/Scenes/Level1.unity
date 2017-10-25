@@ -263,6 +263,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dec83cd5769eda4585c31780082516a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ammo: {fileID: 0}
+  cam: {fileID: 0}
+  camStartPos: {x: 0, y: 0, z: 0}
 --- !u!4 &98143566
 Transform:
   m_ObjectHideFlags: 0
@@ -349,10 +352,10 @@ MonoBehaviour:
   goingDown: 1
   maxPow: 0
   isRotate: 0
-  firstClick: 0
   bulletPrefab: {fileID: 1419842187388790, guid: 6da0c958704f31d47946aa4f03486551,
     type: 2}
   bulletSpawn: {fileID: 2140683960}
+  clickCount: 0
 --- !u!4 &358039576 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4846947573005910, guid: d60383c22d12ad64da78c9fed139e27d,
@@ -658,15 +661,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4108599303402120, guid: 80e2779d4bdb6fe4bb13f1ea0366b776, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4108599303402120, guid: 80e2779d4bdb6fe4bb13f1ea0366b776, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4108599303402120, guid: 80e2779d4bdb6fe4bb13f1ea0366b776, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4108599303402120, guid: 80e2779d4bdb6fe4bb13f1ea0366b776, type: 2}
       propertyPath: m_LocalRotation.w
@@ -679,6 +682,14 @@ Prefab:
     - target: {fileID: 1910422788999002, guid: 80e2779d4bdb6fe4bb13f1ea0366b776, type: 2}
       propertyPath: m_Name
       value: "Sein\xE4 (1)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108599303402120, guid: 80e2779d4bdb6fe4bb13f1ea0366b776, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108599303402120, guid: 80e2779d4bdb6fe4bb13f1ea0366b776, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 80e2779d4bdb6fe4bb13f1ea0366b776, type: 2}
