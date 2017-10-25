@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Cannon
+  - Ammo
   layers:
   - Default
   - TransparentFX

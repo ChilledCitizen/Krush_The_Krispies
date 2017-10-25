@@ -6,17 +6,17 @@ public class Cannon : MonoBehaviour {
 
 
     public float rotationSpeed = 1, shootSpeed,shotMod = 1, maxShotSpeed;
-    public bool goingDown, maxPow, isRotate, firstClick;
+    public bool goingDown, maxPow, isRotate;
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
-
+    public int clickCount;
 
     // Use this for initialization
     void Start () {
 
         goingDown = false;
         isRotate = false;
-        firstClick = true;
+        clickCount = 0;
 	}
 	
 	// Update is called once per frame
@@ -61,7 +61,7 @@ public class Cannon : MonoBehaviour {
         {
             
             
-            if(!firstClick)
+            if(clickCount == 1)
             {
                 if (!maxPow)
                 {
@@ -82,7 +82,7 @@ public class Cannon : MonoBehaviour {
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (!firstClick)
+            if (clickCount == 1)
             {
                 isRotate = false;
                 maxPow = false;
@@ -90,13 +90,18 @@ public class Cannon : MonoBehaviour {
                 Fire();
             }
 
-            if (firstClick && !isRotate)
+            if (clickCount == 0 && !isRotate)
             {
                 isRotate = true;
-                firstClick = false;
+                clickCount = 1;
             }            
 
                        
+        }
+
+        if (GameObject.FindWithTag("Ammo") == null && clickCount == 2)
+        {
+            clickCount = 0;
         }
         
     }
@@ -104,7 +109,7 @@ public class Cannon : MonoBehaviour {
     public void Fire()
     {
 
-        firstClick = true;
+        clickCount = 2;
 
         // Create the Bullet from the Bullet Prefab
         GameObject bullet = Instantiate(
@@ -115,8 +120,8 @@ public class Cannon : MonoBehaviour {
         // Add velocity to the bullet
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * shootSpeed;
 
-        // Destroy the bullet after 2 seconds
-        Destroy(bullet, 2.0f);
+        // Destroy the bullet after 10 seconds
+        Destroy(bullet, 10.0f);
         shootSpeed = 0;
         
     }
